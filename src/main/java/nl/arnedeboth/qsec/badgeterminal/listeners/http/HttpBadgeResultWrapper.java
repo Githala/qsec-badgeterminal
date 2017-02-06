@@ -1,6 +1,6 @@
 package nl.arnedeboth.qsec.badgeterminal.listeners.http;
 
-import nl.arnedeboth.qsec.badgeterminal.identification.BadgeResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.BadgeResult;
 
 
 public class HttpBadgeResultWrapper {

@@ -1,6 +1,10 @@
 package identification;
 
 import nl.arnedeboth.qsec.badgeterminal.identification.*;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.BadgeResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.DeniedResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.ErrorResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.GrantedResult;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -57,7 +61,7 @@ public class IdentificationHandlerTest {
   @Test
   public void identifyTestProviderException()
   {
-    // Create the expected DeniedResult with no user.
+    // Create the expected ErrorResult.
     ErrorResult expected = new ErrorResult("test exception");
 
     BadgeResult result = exceptionIdentificationHandler.identify("12345");

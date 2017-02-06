@@ -1,7 +1,6 @@
-package nl.arnedeboth.qsec.badgeterminal;
+package nl.arnedeboth.qsec.badgeterminal.identification;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class User {
 

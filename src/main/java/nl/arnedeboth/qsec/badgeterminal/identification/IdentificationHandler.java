@@ -1,13 +1,14 @@
 package nl.arnedeboth.qsec.badgeterminal.identification;
 
-import nl.arnedeboth.qsec.badgeterminal.User;
 import nl.arnedeboth.qsec.badgeterminal.exceptions.UserProviderException;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.BadgeResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.DeniedResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.ErrorResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.GrantedResult;
 import nl.arnedeboth.qsec.badgeterminal.listeners.IBadgeListener;
 import nl.arnedeboth.qsec.badgeterminal.logger.Logger;
 import nl.arnedeboth.qsec.badgeterminal.provider.IUserProvider;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 

@@ -1,4 +1,4 @@
-package nl.arnedeboth.qsec.badgeterminal.identification;
+package nl.arnedeboth.qsec.badgeterminal.identification.results;
 
 public abstract class BadgeResult {
   public boolean equals(Object other)

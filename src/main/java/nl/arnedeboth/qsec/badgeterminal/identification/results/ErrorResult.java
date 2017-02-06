@@ -1,4 +1,4 @@
-package nl.arnedeboth.qsec.badgeterminal.identification;
+package nl.arnedeboth.qsec.badgeterminal.identification.results;
 
 public class ErrorResult extends BadgeResult {
   private String message;

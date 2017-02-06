@@ -1,9 +1,8 @@
 package nl.arnedeboth.qsec.badgeterminal.reader;
 
-import nl.arnedeboth.qsec.badgeterminal.identification.BadgeResult;
-import nl.arnedeboth.qsec.badgeterminal.identification.GrantedResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.BadgeResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.GrantedResult;
 import nl.arnedeboth.qsec.badgeterminal.identification.IdentificationHandler;
-import nl.arnedeboth.qsec.badgeterminal.identification.IdentificationResult;
 
 import java.util.Scanner;
 

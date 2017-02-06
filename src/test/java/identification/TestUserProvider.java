@@ -1,6 +1,6 @@
 package identification;
 
-import nl.arnedeboth.qsec.badgeterminal.User;
+import nl.arnedeboth.qsec.badgeterminal.identification.User;
 import nl.arnedeboth.qsec.badgeterminal.provider.IUserProvider;
 
 import java.util.HashSet;

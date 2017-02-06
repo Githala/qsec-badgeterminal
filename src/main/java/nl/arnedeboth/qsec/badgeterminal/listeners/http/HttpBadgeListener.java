@@ -1,7 +1,7 @@
 package nl.arnedeboth.qsec.badgeterminal.listeners.http;
 
 import com.google.gson.Gson;
-import nl.arnedeboth.qsec.badgeterminal.identification.BadgeResult;
+import nl.arnedeboth.qsec.badgeterminal.identification.results.BadgeResult;
 import nl.arnedeboth.qsec.badgeterminal.listeners.IBadgeListener;
 
 import static spark.Spark.*;
