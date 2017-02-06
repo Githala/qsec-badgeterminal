@@ -51,4 +51,20 @@ public class User {
   {
     return String.format("User - id: %d - name: %s %s - badgeId: %s", id, firstName, lastName, badgeId);
   }
+
+
+  @Override
+  public boolean equals(Object other)
+  {
+    if (other == null) return false;
+    if (!(other instanceof User)) return false;
+
+    User otherUser = (User) other;
+
+    return id == otherUser.getId() &&
+           firstName.equals(otherUser.getFirstName()) &&
+           lastName.equals(otherUser.getLastName()) &&
+           badgeId.equals((otherUser.getBadgeId())) &&
+           Arrays.equals(groupIds, otherUser.getGroupIds());
+  }
 }

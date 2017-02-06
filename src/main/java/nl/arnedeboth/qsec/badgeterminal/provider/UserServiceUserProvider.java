@@ -2,17 +2,18 @@ package nl.arnedeboth.qsec.badgeterminal.provider;
 
 import com.google.gson.Gson;
 import nl.arnedeboth.qsec.badgeterminal.User;
+import nl.arnedeboth.qsec.badgeterminal.exceptions.UserProviderException;
+import nl.arnedeboth.qsec.badgeterminal.logger.Logger;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.util.Optional;
 
 /**
  * Created by quantu on 04/02/2017.
  */
-public class UserProvider {
+public class UserServiceUserProvider implements IUserProvider {
 
     private static final String GET_USER_URL = "/user/badge/";
 
@@ -22,12 +23,12 @@ public class UserProvider {
 
     private OkHttpClient client = new OkHttpClient();
 
-    public UserProvider(String baseUrl)
+    public UserServiceUserProvider(String baseUrl)
     {
         this.baseUrl = baseUrl;
     }
 
-    public User getUserWithBadgeId(String badgeId)
+    public User getUserWithBadgeId(String badgeId) throws UserProviderException
     {
         Request request = new Request.Builder()
                 .url(baseUrl + GET_USER_URL + badgeId)
@@ -42,8 +43,8 @@ public class UserProvider {
 
         } catch (IOException ioe)
         {
-            return null;
-            //logger.warning("An error while requesting the user from the userservice.");
+            Logger.log("Error", "An error while requesting the user from the userservice.");
+            throw new UserProviderException("Error while connecting to the UserService");
         }
     }
 }
