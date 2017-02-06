@@ -1,6 +1,6 @@
-package nl.arnedeboth.qsec.badgeterminal.identification;
+package nl.arnedeboth.qsec.badgeterminal.identification.results;
 
-import nl.arnedeboth.qsec.badgeterminal.User;
+import nl.arnedeboth.qsec.badgeterminal.identification.User;
 
 /**
  * Created by vlan on 2/5/17.
