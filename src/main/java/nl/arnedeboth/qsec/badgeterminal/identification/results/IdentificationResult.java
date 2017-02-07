@@ -3,7 +3,8 @@ package nl.arnedeboth.qsec.badgeterminal.identification.results;
 import nl.arnedeboth.qsec.badgeterminal.identification.User;
 
 /**
- * Created by vlan on 2/5/17.
+ * The identification result represents a result where an authentication with a user was made.
+ * This class can be used to create results where an authentication has taken place. (For example a success result.)
  */
 public abstract class IdentificationResult extends BadgeResult {
 

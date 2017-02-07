@@ -12,27 +12,36 @@ import nl.arnedeboth.qsec.badgeterminal.provider.IUserProvider;
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 
+/**
+ * IdentificationHandler
+ * This class provides the identifications of badgeIDs passed to it. It will try to find a user that matches the
+ * badgeID and will check if the user has the proper permissions.
+ */
 public class IdentificationHandler {
 
   private IUserProvider userProvider;
   private Set<IBadgeListener> listeners = new ConcurrentSkipListSet<>();
 
-  /* IdentificationHandler
-   * Create a new instance of the IdentificationHandler that uses the specified userProvider to fetch the users from.
+  /**
+   * IdentificationHandler
+   * @param userProvider An implementation of the IUserProvider that will provide the users to identify with..
    */
   public IdentificationHandler(IUserProvider userProvider)
   {
     this.userProvider = userProvider;
   }
 
-  /* identify
+  /**
+   * identify
    * Identify the badge with badgeId.
    * This function will check if a user with badgeId exists. If not, access is denied.
    * If a user is found the function will check if the user has permission to be allowed access.
+   * @param badgeID The badge id that is used to look up a user.
+   * @return        A subclass of BadgeResult that represents the result of the identification.
    */
   public BadgeResult identify(String badgeID)
   {
-    User user = null;
+    User user;
 
     try {
       user = userProvider.getUserWithBadgeId(badgeID);
@@ -59,10 +68,26 @@ public class IdentificationHandler {
     return result;
   }
 
+  /**
+   * addBadgeListener
+   * Adds a listener to the badge event. Whenever a badge event occurs the listeners will be notified.
+   * @param listener The listener that should be notified when a badge event occurs.
+   */
   public void addBadgeListener(IBadgeListener listener)
   {
     listeners.add(listener);
   }
+
+  /**
+   * removeBadgeListener
+   * Removes the listener from the badge event. This listener should no longer be notified.
+   * @param listener The listener that should no longer be notified when a badge event occurs.
+   */
+  public void removeBadgeListener(IBadgeListener listener)
+  {
+    listeners.remove(listener);
+  }
+
 
   // Notify all the listeners that a badge attempt has been made and what the result is.
   private void notifyListeners(BadgeResult result)

@@ -2,6 +2,10 @@ package nl.arnedeboth.qsec.badgeterminal.identification;
 
 import java.util.Arrays;
 
+/**
+ * User
+ * The user class that represents a user retrieved from a UserPro
+ */
 public class User {
 
   private int id;

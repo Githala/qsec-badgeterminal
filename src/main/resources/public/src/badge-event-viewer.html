@@ -1,0 +1,117 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="badge-event-viewer">
+  <template>
+    <style>
+      :host {
+        display: block;
+
+        padding: 10px;
+      }
+
+      .block{
+        margin: auto;
+        width: 400px;
+        height: 400px;
+        background: white;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+        font-size: 2em;
+      }
+
+      h2 {
+        margin: 0px;
+        padding: 0px;
+        text-align: center;
+        font-size: 2em;
+      }
+
+      .granted {
+        background: green;
+      }
+
+      .denied {
+        background: red;
+      }
+
+      .error {
+        background: yellow;
+      }
+    </style>
+
+    <div class$="block [[_accessClass(badge.resultType)]]">
+      <h1>[[badge.result.user.firstName]] [[badge.result.user.lastName]]</h1>
+      <h2>[[_accessResult(badge.resultType)]]</h2>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'badge-event-viewer',
+
+      ready: function() {
+        this._connectWebSocket(this.url);
+      },
+
+      properties: {
+        url: String,
+      },
+
+      // Return a class to adjust the visual representation to the result type.
+      _accessClass: function(resultType)
+      {
+        if (resultType == "GrantedResult")
+        {
+          return "granted";
+        } else if (resultType == "ErrorResult"){
+          return "error";
+        } else {
+          return "denied";
+        }
+      },
+
+      _connectWebSocket: function(url)
+      {
+        var webSocket = new WebSocket(url);
+        webSocket.onmessage = (msg) => this._onBadgeEvent(msg);
+        webSocket.onclose = () => setTimeout(() => this._connectWebSocket(url), 1000);
+      },
+
+      // Return a visual string to show what the result type is.
+      _accessResult: function(resultType)
+      {
+        if (resultType == "ErrorResult") {
+          return "An error occurred while processing the badge.";
+        }
+        else if (resultType == "DeniedResult")
+        {
+          if (resultType == null)
+          {
+              return "Access Denied!";
+          }
+          else
+          {
+              return "Access Denied!";
+          }
+        }
+        else if (resultType == "GrantedResult")
+        {
+            return "Access Granted!";
+        }
+      },
+
+      // Parse the BadgeResult message from the service and store it in the badge variable.
+      _onBadgeEvent: function(msg)
+      {
+        this.badge = JSON.parse(msg.data);
+      },
+
+    });
+  </script>
+</dom-module>

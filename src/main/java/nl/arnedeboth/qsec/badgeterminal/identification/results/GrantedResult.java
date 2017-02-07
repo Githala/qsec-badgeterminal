@@ -2,6 +2,9 @@ package nl.arnedeboth.qsec.badgeterminal.identification.results;
 
 import nl.arnedeboth.qsec.badgeterminal.identification.User;
 
+/* GrantedResult
+ * The identification was successful and the user has the proper permissions.
+ */
 public class GrantedResult extends IdentificationResult {
 
   public GrantedResult(User user) {

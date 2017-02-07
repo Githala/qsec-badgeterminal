@@ -1,5 +1,10 @@
 package nl.arnedeboth.qsec.badgeterminal.identification.results;
 
+/* ErrorResult
+ * This is the result of a badge when an error occurred.
+ * @message: contains a message on the error that has occurred.
+ */
+
 public class ErrorResult extends BadgeResult {
   private String message;
 
