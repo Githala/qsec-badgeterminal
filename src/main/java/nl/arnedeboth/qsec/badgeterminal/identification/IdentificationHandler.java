@@ -9,6 +9,7 @@ import nl.arnedeboth.qsec.badgeterminal.listeners.IBadgeListener;
 import nl.arnedeboth.qsec.badgeterminal.logger.Logger;
 import nl.arnedeboth.qsec.badgeterminal.provider.IUserProvider;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.ConcurrentSkipListSet;
 
@@ -20,7 +21,7 @@ import java.util.concurrent.ConcurrentSkipListSet;
 public class IdentificationHandler {
 
   private IUserProvider userProvider;
-  private Set<IBadgeListener> listeners = new ConcurrentSkipListSet<>();
+  private Set<IBadgeListener> listeners = new HashSet<>();
 
   /**
    * IdentificationHandler

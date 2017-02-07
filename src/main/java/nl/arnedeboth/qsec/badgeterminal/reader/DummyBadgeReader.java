@@ -6,11 +6,11 @@ import nl.arnedeboth.qsec.badgeterminal.identification.IdentificationHandler;
 
 import java.util.Scanner;
 
-public class BadgeReader {
+public class DummyBadgeReader implements IBadgeReader {
 
   private IdentificationHandler identificationHandler;
 
-  public BadgeReader(IdentificationHandler identificationHandler)
+  public DummyBadgeReader(IdentificationHandler identificationHandler)
   {
     this.identificationHandler = identificationHandler;
   }

@@ -56,11 +56,11 @@
       is: 'badge-event-viewer',
 
       ready: function() {
-        this._connectWebSocket(this.url);
+        this._connectWebSocket("ws://" + location.hostname + ":" + location.port + "/listen");
       },
 
       properties: {
-        url: String,
+        //url: String,
       },
 
       // Return a class to adjust the visual representation to the result type.

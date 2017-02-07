@@ -43,7 +43,7 @@ public class UserServiceUserProvider implements IUserProvider {
 
         } catch (IOException ioe)
         {
-            Logger.log("Error", "An error while requesting the user from the userservice.");
+            //Logger.log("ERROR", "An error while requesting the user from the userservice.");
             throw new UserProviderException("Error while connecting to the UserService");
         }
     }

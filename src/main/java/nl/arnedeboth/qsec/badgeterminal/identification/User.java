@@ -1,6 +1,7 @@
 package nl.arnedeboth.qsec.badgeterminal.identification;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * User
@@ -11,16 +12,16 @@ public class User {
   private int id;
   private String firstName;
   private String lastName;
-  private String badgeId;
+  private String[] badgeIds;
   private int[] groupIds;
 
 
-  public User(int id, String firstName, String lastName, String badgeId, int[] groupIds)
+  public User(int id, String firstName, String lastName, String[] badgeIds, int[] groupIds)
   {
     this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.badgeId = badgeId;
+    this.badgeIds = badgeIds;
 
     this.groupIds = groupIds;
   }
@@ -37,8 +38,8 @@ public class User {
     return lastName;
   }
 
-  public String getBadgeId() {
-    return badgeId;
+  public String[] getBadgeIds() {
+    return badgeIds;
   }
 
   public int[] getGroupIds() {
@@ -52,9 +53,13 @@ public class User {
 
   public String toString()
   {
-    return String.format("User - id: %d - name: %s %s - badgeId: %s", id, firstName, lastName, badgeId);
+    return String.format("User - id: %d - name: %s %s - badgeIds: %s", id, firstName, lastName, getBadgeIdsAsString());
   }
 
+  private String getBadgeIdsAsString()
+  {
+    return Arrays.stream(badgeIds).map (i -> i.toString ()).collect (Collectors.joining (","));
+  }
 
   @Override
   public boolean equals(Object other)
@@ -67,7 +72,7 @@ public class User {
     return id == otherUser.getId() &&
            firstName.equals(otherUser.getFirstName()) &&
            lastName.equals(otherUser.getLastName()) &&
-           badgeId.equals((otherUser.getBadgeId())) &&
+           Arrays.equals(badgeIds, otherUser.getBadgeIds()) &&
            Arrays.equals(groupIds, otherUser.getGroupIds());
   }
 }
